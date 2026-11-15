@@ -1,0 +1,14 @@
+node_modules/
+.mimosa/
+.agents/
+.claude/
+.cursor/
+.vscode/
+.openai/
+.wrangler/
+.devcontainer/
+.vinext/
+.next/
+.aider.chat.history.md
+--weak-model=gemini
+belentani7-secure-t-7d4d5d6/
