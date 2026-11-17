@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
+  <meta name="superpowers" content="mcp-hub=belentani-hub,tools=24,groups=4"><meta name="omega-max" content="senior-agent-enabled">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Belentani Omega</title>
@@ -74,24 +75,24 @@ color:var(--accent2);padding:4px 10px;border-radius:999px;margin:10px 0}
 <body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
 <header class="site"><div class="wrap" style="display:flex;justify-content:space-between;align-items:baseline;gap:18px;flex-wrap:wrap">
-<div class="brand">galaxias <span>· ecosistema Belentani · WebGL online</span></div>
-<nav class="site" aria-label="Navegación principal"><a href="index.html" aria-current="page">Inicio</a><a href="docs.html">Documentación</a><a href="accesibilidad.html">Accesibilidad</a><a href="privacidad.html">Privacidad</a><a href="404.html">404</a></nav>
+<div class="brand">galaxias <span>Â· ecosistema Belentani Â· WebGL online</span></div>
+<nav class="site" aria-label="NavegaciÃ³n principal"><a href="index.html" aria-current="page">Inicio</a><a href="docs.html">DocumentaciÃ³n</a><a href="accesibilidad.html">Accesibilidad</a><a href="privacidad.html">Privacidad</a><a href="404.html">404</a></nav>
 </div></header>
 <main id="contenido"><div class="wrap">
 <section class="hero">
     <div class="hero-canvas"></div>
     <div class="hero-overlay">
       <h1>Belentani Omega</h1>
-      <p>Producto completo con home hero, shader WebGL animado, y stack moderno listo para producción.</p>
+      <p>Producto completo con home hero, shader WebGL animado, y stack moderno listo para producciÃ³n.</p>
       <div class="hero-actions">
-        <a href="#" class="btn-primary">Ver Características</a>
+        <a href="#" class="btn-primary">Ver CaracterÃ­sticas</a>
         <a href="#stack" class="btn-secondary">Ver Stack</a>
       </div>
     </div>
   </section>
   <section id="stack">
-    <h2>Stack Tecnológico</h2>
-    <p>Tecnologías utilizadas en este repositorio.</p>
+    <h2>Stack TecnolÃ³gico</h2>
+    <p>TecnologÃ­as utilizadas en este repositorio.</p>
     <ul class="stack-list">
       <li>HTML5</li>
       <li>CSS3</li>
@@ -100,7 +101,7 @@ color:var(--accent2);padding:4px 10px;border-radius:999px;margin:10px 0}
       <li>Responsive Design</li>
     </ul>
   </section>
-  <footer><p>© 2026 Belentani Omega - Parte del ecosistema Belentani</p></footer>
+  <footer><p>Â© 2026 Belentani Omega - Parte del ecosistema Belentani</p></footer>
 /* Hero Shader WebGL */
 (function() {
   const canvas = document.createElement('canvas');
@@ -142,62 +143,62 @@ color:var(--accent2);padding:4px 10px;border-radius:999px;margin:10px 0}
   function render(time) { gl.uniform1f(tl, time * 0.001); gl.uniform2f(ml, mouse.x, mouse.y); gl.drawArrays(gl.TRIANGLES, 0, 6); requestAnimationFrame(render); }
   requestAnimationFrame(render);
 })();
-</div><h2>Catálogo de galaxias</h2>
+</div><h2>CatÃ¡logo de galaxias</h2>
 <ol>
-<li><a href="galaxia-01.html">GALAXIA 01 · EL ENTRE — LA ROCA</a></li>
-<li><a href="galaxia-02.html">GALAXIA 02 · LA DEUDA — LA ROCA</a></li>
-<li><a href="galaxia-03.html">GALAXIA 03 · EL ROBO — LA ROCA</a></li>
-<li><a href="galaxia-04.html">GALAXIA 04 · EL CANTO — LA ROCA</a></li>
-<li><a href="galaxia-05.html">GALAXIA 05 · LA VICTORIA AMARGA — LA ROCA</a></li>
-<li><a href="galaxia-06.html">GALAXIA 06 · LA MENTIRA COMPARTIDA — LA ROCA</a></li>
-<li><a href="galaxia-07.html">GALAXIA 07 · EL UMBRAL — LA ROCA</a></li>
-<li><a href="galaxia-08.html">GALAXIA 08 · LA SEÑAL — LA ROCA</a></li>
-<li><a href="galaxia-09.html">GALAXIA 09 · EL PORTAL — LA ROCA</a></li>
-<li><a href="galaxia-10.html">GALAXIA 10 · LA CONSTELACIÓN — LA ROCA</a></li>
-<li><a href="galaxia-11.html">GALAXIA 11 · EL ENTRE — EL CRONISTA</a></li>
-<li><a href="galaxia-12.html">GALAXIA 12 · LA DEUDA — EL CRONISTA</a></li>
-<li><a href="galaxia-13.html">GALAXIA 13 · EL ROBO — EL CRONISTA</a></li>
-<li><a href="galaxia-14.html">GALAXIA 14 · EL CANTO — EL CRONISTA</a></li>
-<li><a href="galaxia-15.html">GALAXIA 15 · LA VICTORIA AMARGA — EL CRONISTA</a></li>
-<li><a href="galaxia-16.html">GALAXIA 16 · LA MENTIRA COMPARTIDA — EL CRONISTA</a></li>
-<li><a href="galaxia-17.html">GALAXIA 17 · EL UMBRAL — EL CRONISTA</a></li>
-<li><a href="galaxia-18.html">GALAXIA 18 · LA SEÑAL — EL CRONISTA</a></li>
-<li><a href="galaxia-19.html">GALAXIA 19 · EL PORTAL — EL CRONISTA</a></li>
-<li><a href="galaxia-20.html">GALAXIA 20 · LA CONSTELACIÓN — EL CRONISTA</a></li>
-<li><a href="galaxia-21.html">GALAXIA 21 · EL ENTRE — LA ANTENA</a></li>
-<li><a href="galaxia-22.html">GALAXIA 22 · LA DEUDA — LA ANTENA</a></li>
-<li><a href="galaxia-23.html">GALAXIA 23 · EL ROBO — LA ANTENA</a></li>
-<li><a href="galaxia-24.html">GALAXIA 24 · EL CANTO — LA ANTENA</a></li>
-<li><a href="galaxia-25.html">GALAXIA 25 · LA VICTORIA AMARGA — LA ANTENA</a></li>
-<li><a href="galaxia-26.html">GALAXIA 26 · LA MENTIRA COMPARTIDA — LA ANTENA</a></li>
-<li><a href="galaxia-27.html">GALAXIA 27 · EL UMBRAL — LA ANTENA</a></li>
-<li><a href="galaxia-28.html">GALAXIA 28 · LA SEÑAL — LA ANTENA</a></li>
-<li><a href="galaxia-29.html">GALAXIA 29 · EL PORTAL — LA ANTENA</a></li>
-<li><a href="galaxia-30.html">GALAXIA 30 · LA CONSTELACIÓN — LA ANTENA</a></li>
-<li><a href="galaxia-31.html">GALAXIA 31 · EL ENTRE — NÚCLEO</a></li>
-<li><a href="galaxia-32.html">GALAXIA 32 · LA DEUDA — NÚCLEO</a></li>
-<li><a href="galaxia-33.html">GALAXIA 33 · EL ROBO — NÚCLEO</a></li>
-<li><a href="galaxia-34.html">GALAXIA 34 · EL CANTO — NÚCLEO</a></li>
-<li><a href="galaxia-35.html">GALAXIA 35 · LA VICTORIA AMARGA — NÚCLEO</a></li>
-<li><a href="galaxia-36.html">GALAXIA 36 · LA MENTIRA COMPARTIDA — NÚCLEO</a></li>
-<li><a href="galaxia-37.html">GALAXIA 37 · EL UMBRAL — NÚCLEO</a></li>
-<li><a href="galaxia-38.html">GALAXIA 38 · LA SEÑAL — NÚCLEO</a></li>
-<li><a href="galaxia-39.html">GALAXIA 39 · EL PORTAL — NÚCLEO</a></li>
-<li><a href="galaxia-40.html">GALAXIA 40 · LA CONSTELACIÓN — NÚCLEO</a></li>
-<li><a href="galaxia-41.html">GALAXIA 41 · EL ENTRE — INTERFAZ</a></li>
-<li><a href="galaxia-42.html">GALAXIA 42 · LA DEUDA — INTERFAZ</a></li>
-<li><a href="galaxia-43.html">GALAXIA 43 · EL ROBO — INTERFAZ</a></li>
-<li><a href="galaxia-44.html">GALAXIA 44 · EL CANTO — INTERFAZ</a></li>
-<li><a href="galaxia-45.html">GALAXIA 45 · LA VICTORIA AMARGA — INTERFAZ</a></li>
-<li><a href="galaxia-46.html">GALAXIA 46 · LA MENTIRA COMPARTIDA — INTERFAZ</a></li>
-<li><a href="galaxia-47.html">GALAXIA 47 · EL UMBRAL — INTERFAZ</a></li>
-<li><a href="galaxia-48.html">GALAXIA 48 · LA SEÑAL — INTERFAZ</a></li>
-<li><a href="galaxia-49.html">GALAXIA 49 · EL PORTAL — INTERFAZ</a></li>
-<li><a href="galaxia-50.html">GALAXIA 50 · LA CONSTELACIÓN — INTERFAZ</a></li>
+<li><a href="galaxia-01.html">GALAXIA 01 Â· EL ENTRE â€” LA ROCA</a></li>
+<li><a href="galaxia-02.html">GALAXIA 02 Â· LA DEUDA â€” LA ROCA</a></li>
+<li><a href="galaxia-03.html">GALAXIA 03 Â· EL ROBO â€” LA ROCA</a></li>
+<li><a href="galaxia-04.html">GALAXIA 04 Â· EL CANTO â€” LA ROCA</a></li>
+<li><a href="galaxia-05.html">GALAXIA 05 Â· LA VICTORIA AMARGA â€” LA ROCA</a></li>
+<li><a href="galaxia-06.html">GALAXIA 06 Â· LA MENTIRA COMPARTIDA â€” LA ROCA</a></li>
+<li><a href="galaxia-07.html">GALAXIA 07 Â· EL UMBRAL â€” LA ROCA</a></li>
+<li><a href="galaxia-08.html">GALAXIA 08 Â· LA SEÃ‘AL â€” LA ROCA</a></li>
+<li><a href="galaxia-09.html">GALAXIA 09 Â· EL PORTAL â€” LA ROCA</a></li>
+<li><a href="galaxia-10.html">GALAXIA 10 Â· LA CONSTELACIÃ“N â€” LA ROCA</a></li>
+<li><a href="galaxia-11.html">GALAXIA 11 Â· EL ENTRE â€” EL CRONISTA</a></li>
+<li><a href="galaxia-12.html">GALAXIA 12 Â· LA DEUDA â€” EL CRONISTA</a></li>
+<li><a href="galaxia-13.html">GALAXIA 13 Â· EL ROBO â€” EL CRONISTA</a></li>
+<li><a href="galaxia-14.html">GALAXIA 14 Â· EL CANTO â€” EL CRONISTA</a></li>
+<li><a href="galaxia-15.html">GALAXIA 15 Â· LA VICTORIA AMARGA â€” EL CRONISTA</a></li>
+<li><a href="galaxia-16.html">GALAXIA 16 Â· LA MENTIRA COMPARTIDA â€” EL CRONISTA</a></li>
+<li><a href="galaxia-17.html">GALAXIA 17 Â· EL UMBRAL â€” EL CRONISTA</a></li>
+<li><a href="galaxia-18.html">GALAXIA 18 Â· LA SEÃ‘AL â€” EL CRONISTA</a></li>
+<li><a href="galaxia-19.html">GALAXIA 19 Â· EL PORTAL â€” EL CRONISTA</a></li>
+<li><a href="galaxia-20.html">GALAXIA 20 Â· LA CONSTELACIÃ“N â€” EL CRONISTA</a></li>
+<li><a href="galaxia-21.html">GALAXIA 21 Â· EL ENTRE â€” LA ANTENA</a></li>
+<li><a href="galaxia-22.html">GALAXIA 22 Â· LA DEUDA â€” LA ANTENA</a></li>
+<li><a href="galaxia-23.html">GALAXIA 23 Â· EL ROBO â€” LA ANTENA</a></li>
+<li><a href="galaxia-24.html">GALAXIA 24 Â· EL CANTO â€” LA ANTENA</a></li>
+<li><a href="galaxia-25.html">GALAXIA 25 Â· LA VICTORIA AMARGA â€” LA ANTENA</a></li>
+<li><a href="galaxia-26.html">GALAXIA 26 Â· LA MENTIRA COMPARTIDA â€” LA ANTENA</a></li>
+<li><a href="galaxia-27.html">GALAXIA 27 Â· EL UMBRAL â€” LA ANTENA</a></li>
+<li><a href="galaxia-28.html">GALAXIA 28 Â· LA SEÃ‘AL â€” LA ANTENA</a></li>
+<li><a href="galaxia-29.html">GALAXIA 29 Â· EL PORTAL â€” LA ANTENA</a></li>
+<li><a href="galaxia-30.html">GALAXIA 30 Â· LA CONSTELACIÃ“N â€” LA ANTENA</a></li>
+<li><a href="galaxia-31.html">GALAXIA 31 Â· EL ENTRE â€” NÃšCLEO</a></li>
+<li><a href="galaxia-32.html">GALAXIA 32 Â· LA DEUDA â€” NÃšCLEO</a></li>
+<li><a href="galaxia-33.html">GALAXIA 33 Â· EL ROBO â€” NÃšCLEO</a></li>
+<li><a href="galaxia-34.html">GALAXIA 34 Â· EL CANTO â€” NÃšCLEO</a></li>
+<li><a href="galaxia-35.html">GALAXIA 35 Â· LA VICTORIA AMARGA â€” NÃšCLEO</a></li>
+<li><a href="galaxia-36.html">GALAXIA 36 Â· LA MENTIRA COMPARTIDA â€” NÃšCLEO</a></li>
+<li><a href="galaxia-37.html">GALAXIA 37 Â· EL UMBRAL â€” NÃšCLEO</a></li>
+<li><a href="galaxia-38.html">GALAXIA 38 Â· LA SEÃ‘AL â€” NÃšCLEO</a></li>
+<li><a href="galaxia-39.html">GALAXIA 39 Â· EL PORTAL â€” NÃšCLEO</a></li>
+<li><a href="galaxia-40.html">GALAXIA 40 Â· LA CONSTELACIÃ“N â€” NÃšCLEO</a></li>
+<li><a href="galaxia-41.html">GALAXIA 41 Â· EL ENTRE â€” INTERFAZ</a></li>
+<li><a href="galaxia-42.html">GALAXIA 42 Â· LA DEUDA â€” INTERFAZ</a></li>
+<li><a href="galaxia-43.html">GALAXIA 43 Â· EL ROBO â€” INTERFAZ</a></li>
+<li><a href="galaxia-44.html">GALAXIA 44 Â· EL CANTO â€” INTERFAZ</a></li>
+<li><a href="galaxia-45.html">GALAXIA 45 Â· LA VICTORIA AMARGA â€” INTERFAZ</a></li>
+<li><a href="galaxia-46.html">GALAXIA 46 Â· LA MENTIRA COMPARTIDA â€” INTERFAZ</a></li>
+<li><a href="galaxia-47.html">GALAXIA 47 Â· EL UMBRAL â€” INTERFAZ</a></li>
+<li><a href="galaxia-48.html">GALAXIA 48 Â· LA SEÃ‘AL â€” INTERFAZ</a></li>
+<li><a href="galaxia-49.html">GALAXIA 49 Â· EL PORTAL â€” INTERFAZ</a></li>
+<li><a href="galaxia-50.html">GALAXIA 50 Â· LA CONSTELACIÃ“N â€” INTERFAZ</a></li>
 </ol>
 </main>
 <footer class="site"><div class="wrap">
-<p>galaxias · WebGL listo para servir online · <a href="index.html">Inicio</a> · <a href="accesibilidad.html">Accesibilidad</a> · <a href="privacidad.html">Privacidad</a></p>
+<p>galaxias Â· WebGL listo para servir online Â· <a href="index.html">Inicio</a> Â· <a href="accesibilidad.html">Accesibilidad</a> Â· <a href="privacidad.html">Privacidad</a></p>
 </div></footer>
 <script>
 (function(){
@@ -231,5 +232,8 @@ color:var(--accent2);padding:4px 10px;border-radius:999px;margin:10px 0}
   }catch(e){ console.log('WebGL init:', e.message); }
 })();
 </script>
-</body>
+
+  <section class="superpowers-mcp" style="margin:2rem 0;padding:1.5rem;border:1px solid #FF2B2B;border-radius:12px;background:#FF2B2B08;"><h2 style="margin:0 0 1rem 0;font-family:sans-serif;color:#FF2B2B;">Superpowers MCP - belentani-hub</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.8rem;"><div><strong>Google:</strong> Drive, Gmail, Gemini, Cloud, Colab</div><div><strong>GitHub:</strong> Codespaces, Repos, Issues, PRs</div><div><strong>IA:</strong> OpenAI ChatGPT, Gemini, Suno</div><div><strong>Social:</strong> LinkedIn, DistroKid</div></div><p style="margin-top:0.8rem;font-size:0.85rem;color:#666;">MCP Hub: belentani-hub | 24 herramientas | 4 grupos</p></section>
+  <script src="C:\Users\USER\workspace\repositorios\heyduck\legacy\omega-superpowers-client.js"></script>
+  </body>
 </html>

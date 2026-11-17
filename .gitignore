@@ -12,3 +12,6 @@ node_modules/
 .aider.chat.history.md
 --weak-model=gemini
 belentani7-secure-t-7d4d5d6/
+
+.vercel
+.env*
