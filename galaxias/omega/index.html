@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OMEGA — a caminho do universo</title>
+<meta name="description" content="Ponto de entrada preservado: a experiência OMEGA vive agora na raiz do sítio.">
+<link rel="canonical" href="../../index.html">
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url=../../index.html">
+<link rel="stylesheet" href="../../css/omega.css">
+<script>
+  /* Preserva o idioma e o mundo pedidos pelos capítulos clássicos (?lang=ca). */
+  (function () {
+    var search = window.location.search || '';
+    var params = new URLSearchParams(search);
+    var target = new URL('../../index.html', window.location.href);
+    ['lang', 'world', 'quality'].forEach(function (key) {
+      var value = params.get(key);
+      if (value) target.searchParams.set(key, value);
+    });
+    target.hash = window.location.hash;
+    window.location.replace(target.toString());
+  })();
+</script>
+</head>
+<body>
+<div class="noscript" style="position:static;display:grid;place-items:center;min-height:100dvh;padding:40px;text-align:center;background:#020103">
+  <div>
+    <h1>BELENTANI / OMEGA</h1>
+    <p>A experiência imersiva mudou de endereço.</p>
+    <p><a href="../../index.html">Continuar para o universo OMEGA</a></p>
+    <p><a href="../index.html">Voltar ao catálogo de 50 galáxias</a></p>
+  </div>
+</div>
+</body>
+</html>

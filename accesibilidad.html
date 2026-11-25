@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accesibilidad · BELENTANI OMEGA</title>
+<meta name="description" content="Compromiso de accesibilidad del universo OMEGA: navegación por teclado, contraste, movimiento reducido, alternativas sin WebGL y audio opcional.">
+<link rel="canonical" href="https://www.belentani.es/omega-web/accesibilidad.html">
+<meta name="theme-color" content="#0b0a09">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0a09'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%237fa88b'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">omega-web <span>· accesibilidad</span></div>
+    <nav class="site" aria-label="Navegación principal">
+      <a href="index.html">Universo</a>
+      <a href="docs.html">Documentación</a>
+      <a href="accesibilidad.html" aria-current="page">Accesibilidad</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="galaxias/index.html">50 galaxias</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <div class="wrap">
+    <p class="eyebrow">Accesibilidad · objetivo WCAG 2.2 nivel AA</p>
+    <h1>El universo también se recorre con el teclado</h1>
+    <p class="lead">La experiencia se diseñó para ser recorrible sin ratón, sin sonido y sin animaciones. Todo lo que se mueve puede detenerse; todo lo que suena es opcional; todo lo que se dibuja en GPU tiene una alternativa en CPU.</p>
+
+    <h2>Compromisos verificables</h2>
+    <table>
+      <thead><tr><th scope="col">Requisito</th><th scope="col">Implementación</th></tr></thead>
+      <tbody>
+        <tr><td>Navegación completa por teclado</td><td>Enlace de salto al contenido, controles nativos (<code>button</code>, <code>select</code>, <code>a</code>) y foco visible con <code>:focus-visible</code>.</td></tr>
+        <tr><td>Sin trampas de foco</td><td>El panel de galaxias se abre y se cierra con <code>Escape</code>; el foco regresa siempre a un control real.</td></tr>
+        <tr><td>Movimiento reducido</td><td><code>prefers-reduced-motion: reduce</code> desactiva deriva de cámara, animaciones y transiciones; el botón de pausa detiene el render sin perder el estado.</td></tr>
+        <tr><td>Contraste</td><td>Texto principal sobre fondo casi negro con relación superior a 7:1; los acentos se usan para texto grande, iconos y bordes, nunca para texto pequeño imprescindible.</td></tr>
+        <tr><td>Idioma declarado</td><td><code>lang</code> del documento se actualiza con el selector (pt, es, en, ca) y los fragmentos en otro idioma se marcan.</td></tr>
+        <tr><td>Anuncios para lectores de pantalla</td><td>Región <code>role="status"</code> con <code>aria-live="polite"</code> anuncia el mundo seleccionado; los avisos de error usan <code>role="alert"</code>.</td></tr>
+        <tr><td>Audio opcional</td><td>El acorde de 432&nbsp;Hz solo empieza con un clic explícito y se suspende al ocultar la pestaña.</td></tr>
+        <tr><td>Sin dependencia de WebGL</td><td>Si el contexto no está disponible o se pierde, se dibuja en Canvas&nbsp;2D y se informa en un aviso no bloqueante.</td></tr>
+        <tr><td>Sin dependencia de JavaScript</td><td>El catálogo de 50 galaxias y estas páginas funcionan sin scripts; el universo avisa con un <code>noscript</code> y ofrece la ruta alternativa.</td></tr>
+        <tr><td>Alto contraste del sistema</td><td><code>forced-colors: active</code> refuerza bordes y estados de selección.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Atajos de teclado</h2>
+    <table>
+      <thead><tr><th scope="col">Tecla</th><th scope="col">Acción</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td>Mundo anterior / siguiente</td></tr>
+        <tr><td><kbd>C</kbd></td><td>Modo cine (oculta paneles, deja el cosmos)</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Cierra el panel de galaxias o recentra la cámara</td></tr>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Recorre todos los controles en orden de documento</td></tr>
+        <tr><td><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></td><td>Vuelo libre (con el modo explorar activo)</td></tr>
+        <tr><td><kbd>E</kbd> / <kbd>Q</kbd></td><td>Subir / bajar en vuelo libre</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Limitaciones conocidas</h2>
+    <ul>
+      <li>La escena de <code>src/</code> (Three.js) es decorativa: no contiene información que no esté también en texto.</li>
+      <li>El render en GPU puede consumir batería en equipos antiguos; el perfil <code>eco</code> limita resolución y FPS, y se activa solo al detectar <code>saveData</code>, móvil o batería baja.</li>
+      <li>La auditoría automatizada con Lighthouse no forma parte de este entorno de integración; las comprobaciones actuales son estructurales (HTML, enlaces, contraste declarado y contratos de identificadores).</li>
+    </ul>
+
+    <h2>Cómo reportar una barrera</h2>
+    <p>Abre una incidencia en <a href="https://github.com/belentani7/omega-web/issues">github.com/belentani7/omega-web/issues</a> indicando la página, el navegador, la tecnología de asistencia y el paso exacto que falla. Los problemas de accesibilidad se tratan como defectos, no como mejoras.</p>
+
+    <hr>
+    <p><a href="index.html">Volver al universo</a> · <a href="docs.html">Documentación</a> · <a href="privacidad.html">Privacidad</a></p>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Pedro Marcos Santos Belentani · Barcelona</span>
+    <span><a href="https://github.com/belentani7/omega-web">Repositorio</a> · <a href="https://belentani.es">belentani.es</a></span>
+  </div>
+</footer>
+</body>
+</html>

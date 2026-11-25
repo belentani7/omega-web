@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BELENTANI — OMEGA / 50 GALÁXIAS IMERSIVAS</title>
+<meta name="description" content="BELENTANI OMEGA — universo interativo de 50 galáxias, cinco assinaturas e dez estações. Experiência WebGL autônoma.">
+<meta property="og:title" content="BELENTANI — OMEGA / 50 GALÁXIAS IMERSIVAS">
+<meta property="og:description" content="BELENTANI OMEGA — universo interativo de 50 galáxias, cinco assinaturas e dez estações. Experiência WebGL autônoma.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0a09'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%231450da'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#0b0a09;--bg2:#131110;--ink:#f4efe7;--dim:#a89f92;--accent:#e0a35c;
+--accent2:#7fa88b;--line:rgba(244,239,231,.14);--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+--sans:ui-sans-serif,"Segoe UI",Inter,system-ui,-apple-system,sans-serif;
+--mono:ui-monospace,"Cascadia Mono",Consolas,monospace;--measure:62ch;--radius:14px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(18px,4vw,40px);position:relative;z-index:1}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent2);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:#12100e;padding:10px 16px;z-index:9}
+.skip:focus{left:12px;top:12px}
+header.site{border-bottom:1px solid var(--line);padding:22px 0;display:flex;gap:18px;
+align-items:baseline;justify-content:space-between;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-size:1.05rem;letter-spacing:.01em}
+.brand span{color:var(--dim)}
+nav.site{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;
+letter-spacing:.14em;text-transform:uppercase}
+nav.site a{color:var(--dim);text-decoration:none}
+nav.site a:hover,nav.site a[aria-current=page]{color:var(--ink)}
+main{padding:clamp(48px,9vh,104px) 0}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+color:var(--accent);margin:0 0 18px}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,7vw,5.2rem);line-height:.95;
+letter-spacing:-.03em;margin:0 0 24px;font-weight:500;text-wrap:balance}
+h2{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.15;
+letter-spacing:-.02em;margin:64px 0 18px;font-weight:500}
+h3{font-size:1.02rem;margin:28px 0 10px;letter-spacing:-.01em}
+p,li{max-width:var(--measure);color:var(--ink)}
+.lead{font-size:clamp(1.05rem,2vw,1.28rem);color:var(--dim);max-width:56ch}
+hr{border:0;border-top:1px solid var(--line);margin:clamp(40px,8vh,80px) 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;
+background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:32px 0}
+.cell{background:var(--bg2);padding:22px 20px}
+.cell h3{margin-top:0}
+.cell p{font-size:.9rem;color:var(--dim);margin:0}
+code,kbd{font-family:var(--mono);font-size:.86em;background:rgba(244,239,231,.07);
+padding:2px 6px;border-radius:5px}
+pre{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);
+padding:18px;overflow:auto;max-width:100%}
+pre code{background:none;padding:0}
+table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.92rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.pill{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
+text-transform:uppercase;border:1px solid var(--line);color:var(--dim);padding:3px 9px;border-radius:999px}
+footer.site{border-top:1px solid var(--line);padding:28px 0 44px;color:var(--dim);font-size:.8rem}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+.reveal{opacity:1;transform:none;transition:none}}
+::selection{background:var(--accent);color:#12100e}
+.webgl-canvas{width:100%;height:400px;background:var(--bg2);border:1px solid var(--line);
+border-radius:var(--radius);margin:24px 0;display:block}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="site"><div class="wrap" style="display:flex;justify-content:space-between;align-items:baseline;gap:18px;flex-wrap:wrap">
+<div class="brand">galaxias <span>· ecosistema Belentani · WebGL online</span></div>
+<nav class="site" aria-label="Navegación principal"><a href="index.html">Inicio</a><a href="../docs.html">Documentación</a><a href="../accesibilidad.html">Accesibilidad</a><a href="../privacidad.html">Privacidad</a><a href="../404.html">404</a></nav>
+</div></header>
+<main id="contenido"><div class="wrap">
+<a href="#routes" class="skip">Saltar a las galaxias</a>
+<div id="fallback"></div><canvas id="universe" aria-label="Mapa de cincuenta galaxias interactivas" role="img"></canvas><div id="grain"></div><div id="shade"></div>
+<div id="nodes" aria-label="Estrellas de acceso directo a las cincuenta galaxias"></div>
+<div id="space-label" aria-hidden="true"><span>JUDAS · CORE 07</span><strong>Ω ZION</strong></div>
+<header class="glass">
+<a class="brand" href="../index.html" aria-label="Belentani Omega, página principal"><i class="sigil" aria-hidden="true"></i><span>BELENTANI<small>OMEGA / JUDAS · 432 HZ</small></span></a>
+<div class="top-actions">
+<select id="lang" aria-label="Idioma"><option value="pt">PT</option><option value="es">ES</option><option value="en">EN</option><option value="ca">CA</option></select>
+<button type="button" id="quality" class="control" aria-label="Cambiar calidad gráfica">AUTO</button>
+<button type="button" id="sound" class="control" aria-pressed="false" aria-label="Activar ambiente sonoro">♪ OFF</button>
+<a class="control" href="index.html" id="matrixlink">MATRIZ ↗</a>
+</div>
+</header>
+<aside class="glass" aria-labelledby="title">
+<div class="eyebrow">JUDAS EXPERIENCE // COSMOS</div>
+<h1 id="title">50 <em>GALÁXIAS</em></h1>
+<p class="lede" id="intro">Cinco assinaturas. Dez estações. Cinquenta mundos. O caos é a matéria; o sistema é a forma.</p>
+<div class="rule"></div>
+<div class="filters">
+<label><span id="lab-sig">ASSINATURA</span><select id="sig"><option value="all">TODAS · 50</option></select></label>
+<label><span id="lab-station">ESTAÇÃO</span><select id="station"><option value="all">TODAS</option></select></label>
+</div>
+<div class="mini-meta" id="count">50 / 50 PORTAIS · WEBGL</div>
+<div id="routes" role="navigation" aria-label="Navegación por galaxias"></div>
+</aside>
+<div id="right" class="glass" aria-live="polite">
+<div class="overline" id="selected-meta">SIGNATURE 01 / STATION 01</div>
+<h2 id="selected-title">EL ENTRE</h2>
+<p id="selected-desc">A primeira estação: o instante antes do mundo.</p>
+<div id="status">JUDAS-CORE-07 · OMEGA_CLEAN · UPLINK STABLE</div>
+<div class="right-actions">
+<a id="enter" class="primary" href="galaxia-01.html?lang=pt">ENTRAR NO MUNDO <span aria-hidden="true">↗</span></a>
+<button id="reset" class="mini" type="button" title="Centralizar câmera" aria-label="Restaurar cámara">◎</button>
+</div>
+</div>
+<div id="help">ARRASTAR: ORBITAR · RODA: ZOOM · ← →: EXPLORAR · ENTER: ENTRAR</div>
+<div id="loader"><div class="loadmark">BELENTANI / OMEGA<br><br>INICIANDO UNIVERSO</div></div>
+<script>
+(function(){
+'use strict';
+var TAU=Math.PI*2, $=function(s){return document.querySelector(s)}, canvas=$('#universe'), nodeLayer=$('#nodes'), list=$('#routes');
+var signatures=[
+ {code:'PEDRO',role:'LA ROCA',color:'#ffd45c',desc:'permanencia'},
+ {code:'MARCOS',role:'EL CRONISTA',color:'#65f7ff',desc:'memoria'},
+ {code:'SANTOS',role:'LA ANTENA',color:'#b883ff',desc:'señal'},
+ {code:'BELENTANI',role:'NÚCLEO',color:'#ff003c',desc:'integración'},
+ {code:'THE HUMAN',role:'INTERFAZ',color:'#f6eef4',desc:'presencia'}
+];
+var stations=[
+ ['EL ENTRE','O ENTRE','THE BETWEEN',"L'ENTRE"],
+ ['LA DEUDA','A DÍVIDA','THE DEBT','EL DEUTE'],
+ ['EL ROBO','O ROUBO','THE THEFT','EL ROBATORI'],
+ ['EL CANTO','O CANTO','THE SONG','EL CANT'],
+ ['LA VICTORIA AMARGA','A VITÓRIA AMARGA','THE BITTER VICTORY','LA VICTÒRIA AMARGA'],
+ ['LA MENTIRA COMPARTIDA','A MENTIRA PARTILHADA','THE SHARED LIE','LA MENTIDA COMPARTIDA'],
+ ['EL UMBRAL','O LIMIAR','THE THRESHOLD','EL LLINDAR'],
+ ['LA SEÑAL','O SINAL','THE SIGNAL','EL SENYAL'],
+ ['EL PORTAL','O PORTAL','THE PORTAL','EL PORTAL'],
+ ['LA CONSTELACIÓN','A CONSTELAÇÃO','THE CONSTELLATION','LA CONSTEL·LACIÓ']
+];
+var langs=['pt','es','en','ca'], L={
+ pt:{title:'GALÁXIAS',intro:'Cinco assinaturas. Dez estações. Cinquenta mundos. O caos é a matéria; o sistema é a forma.',sig:'ASSINATURA',station:'ESTAÇÃO',all:'TODAS',allSig:'TODAS · 50',enter:'ENTRAR NO MUNDO',matrix:'MATRIZ ↗',hint:'ARRASTAR: ORBITAR · RODA: ZOOM · ← →: EXPLORAR · ENTER: ENTRAR',role:'ASSINATURA',step:'ESTAÇÃO',loc:'O portal conecta diretamente à história original desta galáxia.',count:'PORTAIS',status:'NAVEGAÇÃO LOCAL · SEM SERVIÇOS EXTERNOS'},
+ es:{title:'GALAXIAS',intro:'Cinco firmas. Diez estaciones. Cincuenta mundos. El caos es la materia; el sistema es la forma.',sig:'FIRMA',station:'ESTACIÓN',all:'TODAS',allSig:'TODAS · 50',enter:'ENTRAR EN EL MUNDO',matrix:'MATRIZ ↗',hint:'ARRASTRAR: ORBITAR · RUEDA: ZOOM · ← →: EXPLORAR · ENTER: ENTRAR',role:'FIRMA',step:'ESTACIÓN',loc:'Este portal conduce directamente a la historia original de la galaxia.',count:'PORTALES',status:'NAVEGACIÓN LOCAL · SIN SERVICIOS EXTERNOS'},
+ en:{title:'GALAXIES',intro:'Five signatures. Ten stations. Fifty worlds. Chaos is the material; the system is the form.',sig:'SIGNATURE',station:'STATION',all:'ALL',allSig:'ALL · 50',enter:'ENTER THIS WORLD',matrix:'INDEX ↗',hint:'DRAG: ORBIT · SCROLL: ZOOM · ← →: EXPLORE · ENTER: ENTER',role:'SIGNATURE',step:'STATION',loc:'This portal leads directly to the original story of this galaxy.',count:'PORTALS',status:'LOCAL NAVIGATION · NO EXTERNAL SERVICE'},
+ ca:{title:'GALÀXIES',intro:'Cinc signatures. Deu estacions. Cinquanta mons. El caos és la matèria; el sistema és la forma.',sig:'SIGNATURA',station:'ESTACIÓ',all:'TOTES',allSig:'TOTES · 50',enter:'ENTRAR AL MÓN',matrix:'ÍNDEX ↗',hint:'ARROSSEGA: ORBITAR · RODA: ZOOM · ← →: EXPLORAR · INTRO: ENTRAR',role:'SIGNATURA',step:'ESTACIÓ',loc:"Aquest portal condueix directament a la història original d'aquesta galàxia.",count:'PORTALS',status:'NAVEGACIÓ LOCAL · SENSE SERVEIS EXTERNS'}
+};
+var language=new URLSearchParams(location.search).get('lang')||'pt';
+if(!L[language])language='pt';
+var li=langs.indexOf(language), selected=0, sigFilter='all', stationFilter='all';
+var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var points=[], buttons=[], routes=[], yaw=.12, pitch=.26, zoom=1.1, targetYaw=.12,targetPitch=.26,targetZoom=1.1;
+var activePointer=null, moving=false, lastX=0,lastY=0, last=0, running=true, perfTime=0, perfFrames=0, quality='AUTO', gl=null, glState=null, audio=null;
+var touches=new Map(),pinchDistance=0, fallbackCanvas=null,ctx2d=null,webglEventsBound=false;
+var visited=new Set();
+try{var historyList=JSON.parse(localStorage.getItem('omega_story')||'[]');if(Array.isArray(historyList))historyList.forEach(function(x){if(/^\d{1,2}$/.test(String(x)))visited.add(String(x).padStart(2,'0'))})}catch(e){}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+function seedRand(seed){var v=seed>>>0;return function(){v=(1664525*v+1013904223)>>>0;return v/4294967296}}
+var random=seedRand(432050);
+for(var i=0;i<50;i++){
+ var s=Math.floor(i/10),st=i%10,ang=s*TAU/5 + st*.17 - .6,rad=205+st*52;
+ points.push({id:i+1,s:s,st:st,x:Math.cos(ang)*rad,y:Math.sin(ang)*rad*.82,z:Math.sin(st*1.48+s)*135,color:signatures[s].color});
+}
+function recordVisit(p){
+ var id=String(p.id).padStart(2,'0');visited.add(id);
+ try{var raw=JSON.parse(localStorage.getItem('omega_story')||'[]');var values=Array.isArray(raw)?raw:[];if(values.indexOf(id)<0)values.push(id);localStorage.setItem('omega_story',JSON.stringify(values.slice(-50)))}catch(e){}
+ updateVisitedUI();
+}
+function updateVisitedUI(){
+ points.forEach(function(p,i){var done=visited.has(String(p.id).padStart(2,'0'));routes[i]&&routes[i].classList.toggle('visited',done);buttons[i]&&buttons[i].classList.toggle('visited',done)});
+ var n=$('#count');if(n){var count=points.filter(isVisible).length;n.textContent=count+' / 50 '+L[language].count+' · '+visited.size+'/50 '+(language==='pt'?'VISITADAS':language==='en'?'VISITED':language==='ca'?'VISITADES':'VISITADAS')+' · '+(gl?'WEBGL':'CANVAS')}
+}
+function isVisible(p){return (sigFilter==='all'||p.s===+sigFilter)&&(stationFilter==='all'||p.st===+stationFilter)}
+function titleOf(p){return stations[p.st][li===0?1:li===1?0:li===2?2:3]}
+function linkOf(p){return 'galaxia-'+String(p.id).padStart(2,'0')+'.html?lang='+language}
+function makeElements(){
+ var frag=document.createDocumentFragment(),routesFrag=document.createDocumentFragment();
+ points.forEach(function(p){
+  var b=document.createElement('button');b.type='button';b.className='node';b.style.setProperty('--node',p.color);b.dataset.id=String(p.id).padStart(2,'0');
+  b.title=String(p.id).padStart(2,'0')+' · '+signatures[p.s].code+' · '+titleOf(p);
+  b.setAttribute('aria-label',b.title);b.addEventListener('click',function(){choose(p.id-1)});frag.appendChild(b);buttons.push(b);
+  var a=document.createElement('button');a.type='button';a.className='route';a.style.setProperty('--node',p.color);a.addEventListener('click',function(){choose(p.id-1)});
+  var n=document.createElement('b');n.className='num';n.textContent=String(p.id).padStart(2,'0');
+  var t=document.createElement('span'),strong=document.createElement('strong'),small=document.createElement('small');strong.textContent=titleOf(p);small.textContent=signatures[p.s].code;t.appendChild(strong);t.appendChild(small);a.appendChild(n);a.appendChild(t);routesFrag.appendChild(a);routes.push(a);
+ });
+ nodeLayer.appendChild(frag);list.appendChild(routesFrag);
+}
+function populate(){
+ var a=$('#sig'),b=$('#station');while(a.options.length>1)a.remove(1);while(b.options.length>1)b.remove(1);
+ a.options[0].textContent=L[language].allSig;b.options[0].textContent=L[language].all;
+ signatures.forEach(function(s,i){var o=document.createElement('option');o.value=String(i);o.textContent=s.code;a.appendChild(o)});
+ stations.forEach(function(st,i){var o=document.createElement('option');o.value=String(i);o.textContent=titleOf({st:i});b.appendChild(o)});
+ a.value=sigFilter;b.value=stationFilter;
+}
+function localize(){
+ li=langs.indexOf(language);document.documentElement.lang=language;
+ $('#lang').value=language;$('#title').innerHTML='50 <em>'+L[language].title+'</em>';
+ $('#intro').textContent=L[language].intro;$('#lab-sig').textContent=L[language].sig;$('#lab-station').textContent=L[language].station;
+ $('#matrixlink').textContent=L[language].matrix;$('#help').textContent=L[language].hint;$('#status').textContent=L[language].status;
+ populate();
+ points.forEach(function(p,i){routes[i].querySelector('strong').textContent=titleOf(p);buttons[i].title=String(p.id).padStart(2,'0')+' · '+signatures[p.s].code+' · '+titleOf(p);buttons[i].setAttribute('aria-label',buttons[i].title)});
+ filter();choose(selected,false);
+}
+function filter(){
+ var count=0;
+ points.forEach(function(p,i){var show=isVisible(p);routes[i].hidden=!show;buttons[i].hidden=!show;if(show)count++});
+ updateVisitedUI();
+ if(!isVisible(points[selected])){var next=points.findIndex(isVisible);if(next!==-1)selected=next}
+ choose(selected,false);
+}
+function choose(i,focus){
+ selected=clamp(i,0,49);var p=points[selected];routes.forEach(function(a,n){a.setAttribute('aria-current',n===selected?'true':'false')});buttons.forEach(function(a,n){a.classList.toggle('active',n===selected)});
+ $('#selected-meta').textContent=L[language].role+' '+String(p.s+1).padStart(2,'0')+' / '+L[language].step+' '+String(p.st+1).padStart(2,'0');
+ $('#selected-title').textContent=titleOf(p);$('#selected-title').style.color=p.color;$('#selected-desc').textContent=signatures[p.s].code+' · '+signatures[p.s].role+'. '+L[language].loc;
+ $('#enter').href=linkOf(p);$('#enter').firstChild.textContent=L[language].enter+' ';
+ if(focus!==false){var a=Math.atan2(p.x,p.z);targetYaw+=Math.atan2(Math.sin(a-targetYaw),Math.cos(a-targetYaw));targetPitch=clamp(p.y/1150,-.48,.48);routes[i].scrollIntoView({block:'nearest',behavior:reduced?'auto':'smooth'});}
+}
+function project(p,w,h){
+ var ca=Math.cos(yaw),sa=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+ var x=p.x*ca-p.z*sa,z=p.x*sa+p.z*ca,y=p.y*cp-z*sp;z=p.y*sp+z*cp;
+ var d=1300+z,sc=1.25*zoom*950/Math.max(320,d);
+ return {x:w*.52+x*sc*(h/1000),y:h*.47-y*sc*(h/1000),z:d};
+}
+function positionNodes(){
+ var w=innerWidth,h=innerHeight;
+ points.forEach(function(p,i){
+  if(!isVisible(p))return;
+  var t=project(p,w,h),out=t.x<8||t.x>w-8||t.y<8||t.y>h-8;
+  buttons[i].style.left=t.x+'px';buttons[i].style.top=t.y+'px';
+  buttons[i].style.opacity=out?'0':String(clamp(1500/t.z,.35,1));
+  buttons[i].style.pointerEvents=out?'none':'auto';
+ });
+}
+function buildStars(){
+ var pos=[],col=[],sz=[],r=seedRand(10432),N=innerWidth<700?6500:22500;
+ // Spiral arms: stars correlate with the existing five signatures.
+ for(var i=0;i<N;i++){
+  var arm=Math.floor(r()*5),u=Math.pow(r(),.71),rad=65+u*940,ang=arm*TAU/5+rad*.0019+(r()-.5)*(.40+u*.28);
+  var spread=(r()-.5)*95,x=Math.cos(ang)*rad+Math.cos(ang+1.57)*spread,y=Math.sin(ang)*rad*.82+Math.sin(ang+1.57)*spread,z=(r()-.5)*240*(1-u*.55);
+  pos.push(x,y,z);
+  var c=arm===0?[1,.77,.31]:arm===1?[.37,.87,1]:arm===2?[.7,.46,1]:arm===3?[1,.08,.27]:[.96,.9,.96];
+  var w=r();
+  col.push(clamp(c[0]*(.55+w*.55),0,1),clamp(c[1]*(.55+w*.55),0,1),clamp(c[2]*(.55+w*.55),0,1));
+  sz.push((r()<.01?4:1)*(1+r()*2));
+ }
+ // Dense warm, turbulent central core.
+ for(var j=0;j<2600;j++){
+  var rr=Math.pow(r(),1.8)*240,t=r()*TAU;
+  pos.push(Math.cos(t)*rr,Math.sin(t)*rr*.74,(r()-.5)*160);col.push(1,.27+r()*.5,.2+r()*.3);sz.push(.5+r()*2.2);
+ }
+ return {pos:new Float32Array(pos),col:new Float32Array(col),sz:new Float32Array(sz)};
+}
+var stars=buildStars();
+function compile(gl,type,source){var sh=gl.createShader(type);gl.shaderSource(sh,source);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(sh));return sh}
+function initGL(){
+ try{
+ gl=canvas.getContext('webgl',{alpha:true,premultipliedAlpha:false,antialias:false,powerPreference:'high-performance',preserveDrawingBuffer:false});
+ if(!gl)throw Error('WebGL unavailable');
+ var vs='attribute vec3 position;attribute vec3 color;attribute float size;uniform float yaw;uniform float pitch;uniform float zoom;uniform float aspect;uniform float dpr;uniform float time;varying vec3 vColor;void main(){float ca=cos(yaw),sa=sin(yaw),cp=cos(pitch),sp=sin(pitch);vec3 p=position;p.xz=vec2(p.x*ca-p.z*sa,p.x*sa+p.z*ca);p.yz=vec2(p.y*cp-p.z*sp,p.y*sp+p.z*cp);float d=max(320.0,1300.0+p.z);float k=950.0*1.25*zoom/d;gl_Position=vec4(p.x*k/aspect/500.0+0.04,p.y*k/500.0+0.06,0.0,1.0);gl_PointSize=clamp(size*1620.0/d*zoom*dpr,1.25,13.0);vColor=color;}';
+ var fs='precision mediump float;varying vec3 vColor;void main(){float r=length(gl_PointCoord-vec2(.5))*2.0;float core=exp(-r*r*25.0);float halo=exp(-r*r*5.0)*.24;float a=min(1.0,core+halo);if(a<.012)discard;gl_FragColor=vec4(vColor,a);}';
+ var program=gl.createProgram();gl.attachShader(program,compile(gl,gl.VERTEX_SHADER,vs));gl.attachShader(program,compile(gl,gl.FRAGMENT_SHADER,fs));gl.linkProgram(program);
+ if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));
+ gl.useProgram(program);
+ function attrib(name,data,size){var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,data,gl.STATIC_DRAW);var loc=gl.getAttribLocation(program,name);gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,size,gl.FLOAT,false,0,0)}
+ attrib('position',stars.pos,3);attrib('color',stars.col,3);attrib('size',stars.sz,1);
+ glState={program:program,uniform:{},N:stars.sz.length};['yaw','pitch','zoom','aspect','dpr','time'].forEach(function(x){glState.uniform[x]=gl.getUniformLocation(program,x)});
+ gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);gl.disable(gl.DEPTH_TEST);
+ if(!webglEventsBound){
+  canvas.addEventListener('webglcontextlost',function(ev){ev.preventDefault();gl=null;glState=null;init2D()});
+  canvas.addEventListener('webglcontextrestored',function(){initGL();resize()});
+  webglEventsBound=true;
+ }
+ if(fallbackCanvas){fallbackCanvas.remove();fallbackCanvas=null;ctx2d=null}
+ canvas.style.display='block';
+ }catch(e){gl=null;glState=null;init2D();}
+}
+function init2D(){
+ if(!fallbackCanvas){
+  fallbackCanvas=document.createElement('canvas');
+  fallbackCanvas.id='fallback-canvas';
+  canvas.insertAdjacentElement('afterend',fallbackCanvas);
+  attachControls(fallbackCanvas);
+ }
+ try{ctx2d=fallbackCanvas.getContext('2d',{alpha:true})}catch(e){ctx2d=null}
+ canvas.style.display='none';
+ resize();
+}
+function resize(){
+ var dpr=Math.min(devicePixelRatio||1,quality==='ECO'?1:1.75);
+ var surface=fallbackCanvas||canvas;
+ surface.width=Math.max(1,Math.floor(innerWidth*dpr));surface.height=Math.max(1,Math.floor(innerHeight*dpr));
+ surface.style.width=innerWidth+'px';surface.style.height=innerHeight+'px';
+ if(gl)gl.viewport(0,0,canvas.width,canvas.height);
+}
+function render2D(){
+ if(!ctx2d)return;var w=fallbackCanvas.width,h=fallbackCanvas.height,scale=w/innerWidth;ctx2d.clearRect(0,0,w,h);
+ var g=ctx2d.createRadialGradient(w*.52,h*.47,6,w*.52,h*.47,w*.48);g.addColorStop(0,'rgba(255,10,64,.19)');g.addColorStop(.3,'rgba(70,1,27,.1)');g.addColorStop(1,'transparent');ctx2d.fillStyle=g;ctx2d.fillRect(0,0,w,h);
+ var limit=quality==='ECO'?1600:Math.min(5000,stars.sz.length);
+ for(var i=0;i<limit;i++){
+  var p={x:stars.pos[i*3],y:stars.pos[i*3+1],z:stars.pos[i*3+2]},t=project(p,innerWidth,innerHeight);
+  if(t.x<0||t.x>innerWidth||t.y<0||t.y>innerHeight)continue;
+  ctx2d.fillStyle='rgba('+Math.round(stars.col[i*3]*255)+','+Math.round(stars.col[i*3+1]*255)+','+Math.round(stars.col[i*3+2]*255)+',.7)';
+  ctx2d.beginPath();ctx2d.arc(t.x*scale,t.y*scale,stars.sz[i]*.7*scale,0,TAU);ctx2d.fill();
+ }
+}
+function renderGL(now){
+ gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);
+ var u=glState.uniform;gl.useProgram(glState.program);
+ gl.uniform1f(u.yaw,yaw);gl.uniform1f(u.pitch,pitch);gl.uniform1f(u.zoom,zoom);
+ gl.uniform1f(u.aspect,canvas.width/canvas.height);gl.uniform1f(u.dpr,canvas.width/innerWidth);gl.uniform1f(u.time,now*.001);
+ gl.drawArrays(gl.POINTS,0,quality==='ECO'?Math.min(3800,glState.N):glState.N);
+}
+function frame(now){
+ if(!running)return;
+ var dt=last?Math.min(48,now-last):16;last=now;
+ if(!reduced&&!moving)targetYaw+=dt*.000018;
+ yaw+=(targetYaw-yaw)*.12;pitch+=(targetPitch-pitch)*.12;zoom+=(targetZoom-zoom)*.13;
+ if(gl&&glState)renderGL(now);else render2D();
+ positionNodes();
+ if(quality==='AUTO'&&!reduced){perfFrames++;if(!perfTime)perfTime=now;if(now-perfTime>2500){var fps=perfFrames*1000/(now-perfTime);if(fps<25){quality='ECO';$('#quality').textContent='ECO';resize()}perfTime=now;perfFrames=0;}}
+ requestAnimationFrame(frame);
+}
+function touchDistance(){
+ var arr=Array.from(touches.values());if(arr.length<2)return 0;return Math.hypot(arr[0].x-arr[1].x,arr[0].y-arr[1].y);
+}
+function attachControls(surface){
+ surface.addEventListener('pointerdown',function(e){
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  touches.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  moving=true;activePointer=e.pointerId;lastX=e.clientX;lastY=e.clientY;
+  try{surface.setPointerCapture(e.pointerId)}catch(err){}
+  if(touches.size===2)pinchDistance=touchDistance();
+ });
+ surface.addEventListener('pointermove',function(e){
+  if(!touches.has(e.pointerId))return;
+  touches.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(touches.size>=2){
+   var distance=touchDistance();
+   if(pinchDistance>0&&distance>0)targetZoom=clamp(targetZoom*distance/pinchDistance,.5,3.5);
+   pinchDistance=distance;lastX=e.clientX;lastY=e.clientY;return;
+  }
+  var dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;
+  targetYaw+=dx*.004;targetPitch=clamp(targetPitch+dy*.003,-1.18,1.18);
+ });
+ function release(e){
+  touches.delete(e.pointerId);pinchDistance=touches.size>=2?touchDistance():0;
+  if(activePointer===e.pointerId){activePointer=null;moving=touches.size>0;lastX=e.clientX;lastY=e.clientY}
+  if(touches.size===0)moving=false;
+  try{surface.releasePointerCapture(e.pointerId)}catch(err){}
+ }
+ surface.addEventListener('pointerup',release);surface.addEventListener('pointercancel',release);
+ surface.addEventListener('wheel',function(e){e.preventDefault();targetZoom=clamp(targetZoom*Math.exp(-e.deltaY*.001),.5,3.5)},{passive:false});
+}
+attachControls(canvas);
+$('#reset').addEventListener('click',function(){targetYaw=.12;targetPitch=.26;targetZoom=1.1});
+$('#enter').addEventListener('click',function(){recordVisit(points[selected])});
+$('#sig').addEventListener('change',function(e){sigFilter=e.target.value;filter()});
+$('#station').addEventListener('change',function(e){stationFilter=e.target.value;filter()});
+$('#lang').addEventListener('change',function(e){language=e.target.value;history.replaceState(null,'','?lang='+language);localize()});
+$('#quality').addEventListener('click',function(){quality=quality==='AUTO'?'ULTRA':quality==='ULTRA'?'ECO':'AUTO';this.textContent=quality;resize()});
+document.addEventListener('keydown',function(e){
+ if(e.target.matches('select,input,textarea'))return;
+ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();var direction=e.key==='ArrowRight'?1:-1,n=selected;for(var i=0;i<50;i++){n=(n+direction+50)%50;if(isVisible(points[n])){choose(n);break}}}
+ if((e.key==='+'||e.key==='=')&&e.target===document.body){targetZoom=clamp(targetZoom*1.15,.5,3.5)}
+ if(e.key==='-'&&e.target===document.body){targetZoom=clamp(targetZoom/1.15,.5,3.5)}
+ if(e.key==='Enter'&&e.target===document.body){recordVisit(points[selected]);location.assign(linkOf(points[selected]))}
+ if(e.key==='Escape'){$('#reset').click()}
+});
+$('#sound').addEventListener('click',function(){
+ var b=this;try{
+ if(audio){audio.osc.stop();audio.ctx.close();audio=null;b.textContent='♪ OFF';b.setAttribute('aria-pressed','false');return}
+ var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+ var ac=new AC(),o=ac.createOscillator(),gain=ac.createGain(),filter=ac.createBiquadFilter();
+ o.type='sine';o.frequency.value=432;filter.type='lowpass';filter.frequency.value=540;
+ gain.gain.value=.0001;o.connect(filter);filter.connect(gain);gain.connect(ac.destination);
+ o.start();gain.gain.exponentialRampToValueAtTime(.012,ac.currentTime+1);
+ audio={ctx:ac,osc:o,gain:gain};b.textContent='♪ ON';b.setAttribute('aria-pressed','true');
+ }catch(err){b.textContent='♪ OFF'}
+});
+document.addEventListener('visibilitychange',function(){if(audio){if(document.hidden)audio.ctx.suspend();else audio.ctx.resume()}});
+addEventListener('resize',resize,{passive:true});
+makeElements();localize();initGL();resize();requestAnimationFrame(frame);
+setTimeout(function(){$('#loader').classList.add('hide');setTimeout(function(){$('#loader').remove()},900)},650);
+})();
+</script>
+</div></main>
+<footer class="site"><div class="wrap">
+<p>galaxias · WebGL listo para servir online · <a href="index.html">Inicio</a> · <a href="../accesibilidad.html">Accesibilidad</a> · <a href="../privacidad.html">Privacidad</a></p>
+</div></footer>
+<script>
+(function(){
+  var canvas = document.createElement('canvas');
+  canvas.className = 'webgl-canvas';
+  var container = document.getElementById('contenido');
+  if(container){ container.appendChild(canvas); }
+  try{
+    var gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if(!gl){ canvas.innerHTML = '<p style="color:var(--dim);font-family:var(--mono);padding:12px">WebGL no disponible en este navegador.</p>'; return; }
+    gl.clearColor(0.047,0.043,0.039,1);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    var vs = gl.createShader(gl.VERTEX_SHADER);
+    gl.shaderSource(vs, 'attribute vec2 p;void main(){gl_Position=vec4(p,0.0,1.0);}');
+    gl.compileShader(vs);
+    var fs = gl.createShader(gl.FRAGMENT_SHADER);
+    gl.shaderSource(fs, 'precision mediump float;uniform vec4 c;void main(){gl_FragColor=c;}');
+    gl.compileShader(fs);
+    var prog = gl.createProgram();
+    gl.attachShader(prog,vs); gl.attachShader(prog,fs); gl.linkProgram(prog);
+    gl.useProgram(prog);
+    var loc = gl.getUniformLocation(prog,'c');
+    gl.uniform4f(loc, 0.549, 0.659, 0.545, 1.0);
+    var buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+    gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+    var attr = gl.getAttribLocation(prog,'p');
+    gl.enableVertexAttribArray(attr);
+    gl.vertexAttribPointer(attr,2,gl.FLOAT,false,0,0);
+    gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+  }catch(e){ console.log('WebGL init:', e.message); }
+})();
+</script>
+  </body>
+</html>

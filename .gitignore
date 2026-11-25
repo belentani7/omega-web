@@ -1,12 +1,25 @@
-# Generated OS metadata, Python bytecode, and HTML reports
-.DS_Store
-._*
-__MACOSX/
-Thumbs.db
-Desktop.ini
-desktop.ini
-__pycache__/
-*.pyc
-*.pyo
-htmlcov/
+node_modules/
+.mimosa/
+.agents/
+.claude/
+.cursor/
+.vscode/
+.openai/
+.wrangler/
+.devcontainer/
+.vinext/
+.next/
+.aider.chat.history.md
+--weak-model=gemini
+belentani7-secure-t-7d4d5d6/
+
+.vercel
+.env*
+
+# Artefactos de build y de verificación
+dist/
+coverage/
 playwright-report/
+test-results/
+*.log
+.DS_Store
