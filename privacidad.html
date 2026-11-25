@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacidad · BELENTANI OMEGA</title>
+<meta name="description" content="Qué datos guarda el universo OMEGA: ninguno en servidor. Estado local limitado, sin analítica, sin cookies de terceros y sin audio remoto.">
+<link rel="canonical" href="https://www.belentani.es/omega-web/privacidad.html">
+<meta name="theme-color" content="#0b0a09">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0a09'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23d4af3c'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">omega-web <span>· privacidad</span></div>
+    <nav class="site" aria-label="Navegación principal">
+      <a href="index.html">Universo</a>
+      <a href="docs.html">Documentación</a>
+      <a href="accesibilidad.html">Accesibilidad</a>
+      <a href="privacidad.html" aria-current="page">Privacidad</a>
+      <a href="galaxias/index.html">50 galaxias</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <div class="wrap">
+    <p class="eyebrow">Privacidad · sin analítica, sin cuentas, sin cookies de terceros</p>
+    <h1>No hay servidor que recuerde tu visita</h1>
+    <p class="lead">El sitio es estático: no existe backend propio, ni formularios, ni sistema de cuentas. Todo lo que el universo recuerda de ti se queda en tu navegador y puedes borrarlo en cualquier momento.</p>
+
+    <h2>Qué se guarda y dónde</h2>
+    <table>
+      <thead><tr><th scope="col">Clave local</th><th scope="col">Contenido</th><th scope="col">Para qué</th></tr></thead>
+      <tbody>
+        <tr><td><code>belentani_omega_cosmos_v2</code></td><td>Mundo actual, idioma, calidad de render, filtros y mundos visitados</td><td>Restaurar la sesión de la experiencia Cosmos</td></tr>
+        <tr><td><code>omega_story</code></td><td>Números de los capítulos clásicos ya leídos</td><td>Marcar progreso en las 50 galaxias</td></tr>
+        <tr><td><code>omega_lang</code></td><td>Código de idioma (pt, es, en, ca)</td><td>Mantener el idioma entre capítulos</td></tr>
+        <tr><td><code>omega_sense</code></td><td>Índice de la paleta «sentido» (0–4)</td><td>Conservar la variante visual elegida</td></tr>
+      </tbody>
+    </table>
+    <p>Son datos de presentación. No contienen nombre, correo, ubicación ni identificadores publicitarios. Si el navegador bloquea el almacenamiento, la experiencia sigue funcionando con valores por defecto.</p>
+
+    <h2>Qué no ocurre</h2>
+    <ul>
+      <li>No se carga ninguna etiqueta de analítica ni píxel publicitario.</li>
+      <li>No se usan cookies de terceros ni se incrustan reproductores externos.</li>
+      <li>No hay llamadas a servicios de audio o de imágenes: el sonido se sintetiza con osciladores locales y los mundos son shaders procedurales.</li>
+      <li>No se envía a ningún servidor el estado del universo ni el progreso de lectura.</li>
+      <li>No se piden permisos de cámara, micrófono, notificaciones ni ubicación.</li>
+    </ul>
+
+    <h2>Peticiones de red reales</h2>
+    <p>Al abrir el sitio, el navegador solicita únicamente documentos, hojas de estilo y módulos JavaScript del mismo dominio. La escena de <code>src/</code> descarga sus modelos glTF desde el propio sitio. Los enlaces marcados como externos (GitHub, belentani.es y los productos del pie) solo se abren si decides pulsarlos.</p>
+
+    <h2>Borrar el estado local</h2>
+    <p>Desde la consola del navegador puedes eliminar todo lo guardado por el universo:</p>
+    <pre><code>['belentani_omega_cosmos_v2', 'omega_story', 'omega_lang', 'omega_sense']
+  .forEach(key => localStorage.removeItem(key));</code></pre>
+    <p>También puedes usar la opción «borrar datos de sitio» de tu navegador; el resultado es idéntico.</p>
+
+    <h2>Alojamiento</h2>
+    <p>El sitio se publica con GitHub Pages bajo el dominio belentani.es. Como cualquier proveedor de alojamiento, GitHub registra las peticiones HTTP necesarias para servir los ficheros; ese tratamiento se rige por la <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement">política de privacidad de GitHub</a> y queda fuera del control de este proyecto.</p>
+
+    <h2>Contacto</h2>
+    <p>Para cualquier duda sobre datos o para solicitar la retirada de contenido, abre una incidencia en <a href="https://github.com/belentani7/omega-web/issues">github.com/belentani7/omega-web/issues</a> o escribe a través de <a href="https://belentani.es">belentani.es</a>.</p>
+    <p class="pill">Última revisión: 25 de noviembre de 2026</p>
+
+    <hr>
+    <p><a href="index.html">Volver al universo</a> · <a href="docs.html">Documentación</a> · <a href="accesibilidad.html">Accesibilidad</a></p>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Pedro Marcos Santos Belentani · Barcelona</span>
+    <span><a href="https://github.com/belentani7/omega-web">Repositorio</a> · <a href="https://belentani.es">belentani.es</a></span>
+  </div>
+</footer>
+</body>
+</html>

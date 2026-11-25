@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Belentani — Universo web</title>
+<meta name="description" content="Universo web de Pedro Belentani: 5 constelaciones, 50 galaxias narrativas, experiencias inmersivas y productos públicos.">
+<meta property="og:title" content="Belentani — Universo web">
+<meta property="og:description" content="5 constelaciones, 50 galaxias narrativas y experiencias inmersivas.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0a09'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23d4af37'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#0b0a09;--bg2:#131110;--ink:#f4efe7;--dim:#a89f92;--accent:#d4af3c;--line:rgba(212,175,60,.14);--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;--sans:ui-sans-serif,"Segoe UI",Inter,system-ui,sans-serif;--mono:ui-monospace,"Cascadia Mono",Consolas,monospace;--measure:62ch;--radius:14px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+a{color:var(--accent)}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:#12100e;padding:10px 16px;z-index:9}
+.skip:focus{left:12px;top:12px}
+header.site{border-bottom:1px solid var(--line);padding:22px 0;display:flex;gap:16px;align-items:baseline;justify-content:space-between;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-size:1.05rem}
+.brand span{color:var(--dim)}
+nav.site{display:flex;gap:16px;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+nav.site a{color:var(--dim);text-decoration:none}
+nav.site a:hover,nav.site a[aria-current=page]{color:var(--ink)}
+main{padding:clamp(48px,9vh,104px) 0}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,7vw,5.2rem);line-height:.95;letter-spacing:-.03em;margin:0 0 22px;font-weight:600}
+h2{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.15;margin:2.2em 0 .7em;font-weight:600}
+p,li{max-width:var(--measure)}
+.lead{font-size:clamp(1.05rem,2vw,1.28rem);color:var(--dim);max-width:56ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:2rem 0}
+.cell{background:var(--bg2);padding:1.5rem 1.25rem;text-decoration:none;color:var(--ink)}
+.cell h3{font-size:1rem;margin:0 0 .5em}
+.cell p{font-size:.86rem;color:var(--dim);margin:0}
+.cell:hover{background:#1a1714}
+.dot{display:inline-block;width:.6em;height:.6em;border-radius:50%;margin-right:.5em;vertical-align:middle}
+footer.site{border-top:1px solid var(--line);padding:26px 0 46px;font-size:.85rem;color:var(--dim);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer.site a{color:var(--accent)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="site">
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:baseline;width:100%;flex-wrap:wrap">
+    <span class="brand">Pedro Belentani <span>· Universo</span></span>
+    <nav class="site" aria-label="Navegación principal">
+      <a href="#constelaciones">Constelaciones</a>
+      <a href="galaxias/index.html">Catálogo (50)</a>
+      <a href="galaxias/inmersivo.html">Inmersivo</a>
+      <a href="galaxias/so-vivo.html">So-vivo</a>
+      <a href="galaxias/omega/index.html">Omega</a>
+    </nav>
+  </div>
+</header>
+<main id="contenido">
+  <div class="wrap">
+    <p class="eyebrow">Universo Belentani</p>
+    <h1>Pedro Belentani</h1>
+    <p class="lead">Ingeniería de sistemas, IA aplicada, interfaces WebGL y tecnología creativa. Cinco constelaciones, cincuenta galaxias y experiencias inmersivas: un mapa navegable, no una lista de enlaces.</p>
+
+    <h2 id="constelaciones">Las 5 constelaciones</h2>
+    <p>Cada constelación es una firma con una función narrativa; dentro, diez galaxias recorren un arco completo.</p>
+    <div class="grid" aria-label="Constelaciones del universo">
+      <a class="cell" href="galaxias/constelaciones/pedro.html">
+        <h3><span class="dot" style="background:#FFD700"></span>LA ROCA</h3>
+        <p>Permanencia · 10 galaxias</p>
+      </a>
+      <a class="cell" href="galaxias/constelaciones/marcos.html">
+        <h3><span class="dot" style="background:#00FFFF"></span>EL CRONISTA</h3>
+        <p>Memoria · 10 galaxias</p>
+      </a>
+      <a class="cell" href="galaxias/constelaciones/santos.html">
+        <h3><span class="dot" style="background:#B026FF"></span>LA ANTENA</h3>
+        <p>Canal · 10 galaxias</p>
+      </a>
+      <a class="cell" href="galaxias/constelaciones/belentani.html">
+        <h3><span class="dot" style="background:#FF003C"></span>NÚCLEO</h3>
+        <p>Integración · 10 galaxias</p>
+      </a>
+      <a class="cell" href="galaxias/constelaciones/human.html">
+        <h3><span class="dot" style="background:#F5F5F5"></span>INTERFAZ</h3>
+        <p>Puente tangible · 10 galaxias</p>
+      </a>
+    </div>
+
+    <h2>Experiencias</h2>
+    <p>Las galaxias narran; las experiencias se recorren.</p>
+    <div class="grid">
+      <a class="cell" href="galaxias/inmersivo.html"><h3>Inmersivo</h3><p>Recorrido inmersivo del universo.</p></a>
+      <a class="cell" href="galaxias/so-vivo.html"><h3>So-vivo</h3><p>Experiencia viva del ecosistema.</p></a>
+      <a class="cell" href="galaxias/omega/index.html"><h3>Omega</h3><p>Plataforma conceptual y archivo.</p></a>
+      <a class="cell" href="https://www.belentani.es" target="_blank" rel="noopener"><h3>belentani.es</h3><p>Hub del artista: 3D, música y narrativa.</p></a>
+      <a class="cell" href="https://secure-t.vercel.app" target="_blank" rel="noopener"><h3>Secure-T</h3><p>Campus abierto de ciberseguridad e IA.</p></a>
+      <a class="cell" href="https://manosabiertas-rho.vercel.app" target="_blank" rel="noopener"><h3>Manos Abiertas</h3><p>Educación gratuita: IA, Office y derechos.</p></a>
+    </div>
+    <p style="margin-top:1.5rem">Catálogo completo de las 50 galaxias: <a href="galaxias/index.html">abrir índice</a> · <a href="https://github.com/belentani7">GitHub</a></p>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap">
+    <span>Pedro Marcos Santos Belentani · Barcelona</span>
+    <a href="https://github.com/belentani7">GitHub</a> · <a href="https://belentani.es">belentani.es</a>
+  </div>
+</footer>
+  </body>
+</html>

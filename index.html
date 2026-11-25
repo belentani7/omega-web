@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BELENTANI — Judas Cosmos / OMEGA</title>
+<meta name="description" content="Oito mundos WebGL procedurais, cinco assinaturas e cinquenta galáxias originais. Universo interativo de Pedro Belentani, sem dependências de runtime.">
+<meta name="theme-color" content="#020103">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://www.belentani.es/omega-web/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BELENTANI — Judas Cosmos / OMEGA">
+<meta property="og:description" content="Oito mundos WebGL procedurais, cinco assinaturas e cinquenta galáxias originais.">
+<meta property="og:url" content="https://www.belentani.es/omega-web/">
+<meta property="og:locale" content="pt_PT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23020103'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ff003c'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/omega.css">
+</head>
+<body data-world="galaxy" data-quality="auto">
+<a class="skip-link" href="#contenido">Saltar para o conteúdo principal</a>
+
+<div class="universe" aria-hidden="true">
+  <canvas id="world-canvas" width="1280" height="720" tabindex="-1"></canvas>
+  <canvas id="overlay-canvas" width="1280" height="720"></canvas>
+  <div class="universe-vignette"></div>
+  <div class="universe-grain"></div>
+  <div class="universe-letterbox"></div>
+</div>
+
+<div id="experience">
+  <header class="topbar panel">
+    <div class="identity">
+      <span class="identity-emblem" aria-hidden="true"><span></span></span>
+      <div class="identity-words">
+        <strong>BELENTANI</strong>
+        <small>JUDAS COSMOS <span class="dim">/ OMEGA</span></small>
+      </div>
+    </div>
+    <div class="topbar-center">
+      <span class="indicator" aria-hidden="true"></span>
+      <span>LIVE · 432 HZ</span>
+      <span class="fps-reading" id="fps-reading">— FPS</span>
+    </div>
+    <div class="topbar-actions">
+      <label class="visually-hidden" for="quality-toggle">Qualidade de renderização</label>
+      <select id="quality-toggle" class="control-select" aria-label="Qualidade de renderização">
+        <option value="auto" selected>AUTO</option>
+        <option value="eco">ECO</option>
+        <option value="high">HIGH</option>
+        <option value="ultra">ULTRA</option>
+      </select>
+      <label class="visually-hidden" for="language">Idioma</label>
+      <select id="language" class="control-select" aria-label="Idioma">
+        <option value="pt" selected>PT</option>
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+        <option value="ca">CA</option>
+      </select>
+      <button id="audio-toggle" class="control-icon" type="button" aria-pressed="false" aria-label="Som"><span aria-hidden="true">♪</span></button>
+      <button id="motion-toggle" class="control-icon" type="button" aria-pressed="false" aria-label="Pausar"><span aria-hidden="true">Ⅱ</span></button>
+      <button id="cinema-toggle" class="control-icon cinema-toggle" type="button" aria-pressed="false" aria-label="Modo cinema"><span aria-hidden="true">◉</span></button>
+      <button id="fullscreen-toggle" class="control-icon" type="button" aria-pressed="false" aria-label="Ecrã inteiro"><span aria-hidden="true">⛶</span></button>
+      <a id="classic-link" class="control-link" href="galaxias/index.html">CLÁSSICO<span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <aside class="world-nav panel" aria-labelledby="world-heading">
+    <div class="world-nav-header">
+      <span class="eyebrow"><i class="tiny-cross" aria-hidden="true"></i>JUDAS / 08 MUNDOS</span>
+      <button id="world-nav-toggle" class="world-nav-toggle" type="button" aria-expanded="false" aria-label="Mostrar mundos">☰</button>
+    </div>
+    <p class="world-nav-title" id="world-heading">OITO<em>MUNDOS</em></p>
+    <p class="world-introduction" id="world-introduction"></p>
+    <div class="world-coordinates">
+      <span class="counter" id="world-counter">01 / 08</span>
+      <span class="counter" id="world-coordinate">JUDAS / 01 / 08</span>
+    </div>
+    <div class="separation" aria-hidden="true"></div>
+    <nav aria-label="Seleção de mundo">
+      <ul class="world-list" id="world-list"></ul>
+    </nav>
+    <div class="navigator-footer">
+      <span class="micro-label" id="signature-caption"></span>
+      <div class="signature-pips" id="signature-pips" role="group" aria-label="Assinaturas"></div>
+      <p class="micro-description" id="signature-description"></p>
+    </div>
+  </aside>
+
+  <main class="hero-hud" id="contenido" aria-labelledby="hero-title">
+    <p class="hero-kicker">
+      <span class="hero-kicker-rule" aria-hidden="true"></span>
+      <span id="hero-chapter"></span>
+      <span id="hero-type"></span>
+    </p>
+    <h1 id="hero-title"></h1>
+    <p id="hero-lead"></p>
+    <div class="hero-actions">
+      <button id="next-world" class="action-primary" type="button">ENTRAR<span aria-hidden="true">→</span></button>
+      <button id="explore-world" class="action-secondary" type="button">EXPLORAR<span aria-hidden="true">✦</span></button>
+    </div>
+  </main>
+
+  <aside class="telemetry" aria-label="Telemetria de renderização">
+    <div class="telemetry-line"><span id="telemetry-link">SIGNAL / LIVE</span><span>432 HZ</span></div>
+    <div class="telemetry-values">
+      <div><small>CANAL</small><strong id="telemetry-channel">01 / 08</strong></div>
+      <div><small>MODO</small><strong id="telemetry-mode">CINEMATIC</strong></div>
+      <div><small>QUALIDADE</small><strong id="telemetry-quality">AUTO</strong></div>
+    </div>
+  </aside>
+
+  <aside class="world-details panel" id="world-details" aria-labelledby="details-title">
+    <div class="details-heading">
+      <span class="eyebrow" id="details-eyebrow">TRANSMISSION / 01</span>
+      <button id="details-close" class="subtle-button" type="button" aria-label="Expandir">−</button>
+    </div>
+    <h3 id="details-title"></h3>
+    <p id="details-copy"></p>
+    <dl class="details-facts" id="details-facts"></dl>
+    <button id="details-expand" class="text-control" type="button" aria-expanded="true"></button>
+  </aside>
+
+  <aside class="galaxy-drawer panel" id="galaxy-drawer" aria-labelledby="galaxy-drawer-title">
+    <div class="drawer-top">
+      <div>
+        <span class="eyebrow" id="drawer-kicker"></span>
+        <h3 id="galaxy-drawer-title">GALÁXIAS <span>50</span></h3>
+      </div>
+      <button id="drawer-toggle" class="control-icon drawer-toggle" type="button" aria-expanded="false" aria-label="Expandir galáxias"><span aria-hidden="true">▾</span></button>
+    </div>
+    <div class="drawer-content" id="drawer-content">
+      <p id="drawer-lead"></p>
+      <div class="drawer-filters">
+        <label for="signature-filter"><span id="signature-filter-label"></span>
+          <select id="signature-filter"><option value="all">TODAS</option></select>
+        </label>
+        <label for="station-filter"><span id="station-filter-label"></span>
+          <select id="station-filter"><option value="all">TODAS</option></select>
+        </label>
+      </div>
+      <p class="galaxy-count" id="galaxy-count"></p>
+      <div class="galaxy-list" id="galaxy-list"></div>
+    </div>
+  </aside>
+
+  <div class="quick-nav" role="group" aria-label="Navegação de mundos">
+    <button class="quick-button" id="world-previous" type="button" aria-label="Mundo anterior">‹</button>
+    <span id="quick-location">01 / 08</span>
+    <button class="quick-button" id="world-next" type="button" aria-label="Mundo seguinte">›</button>
+  </div>
+
+  <div class="bottom-hint">
+    <span id="input-hint"></span>
+    <span id="connection-status"></span>
+  </div>
+
+  <span class="left-side-annotation" aria-hidden="true">JUDAS COSMOS · OMEGA · 50 PORTAIS</span>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div id="omega-announcer" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="error-banner" id="error-banner" role="alert" hidden>
+    <strong>AVISO</strong>
+    <span id="error-message"></span>
+    <button id="error-dismiss" type="button" aria-label="Fechar aviso">×</button>
+  </div>
+
+  <div class="loading" id="loading" role="status" aria-live="polite">
+    <div class="loading-emblem" aria-hidden="true">
+      <div class="loading-orbit"></div>
+      <div class="loading-core"></div>
+    </div>
+    <strong>BELENTANI</strong>
+    <small>JUDAS COSMOS / OMEGA</small>
+    <span id="loading-caption"></span>
+    <div class="loading-line" aria-hidden="true"><span></span></div>
+  </div>
+</div>
+
+<noscript>
+  <div class="noscript">
+    <div>
+      <strong class="no-js-title">BELENTANI / JUDAS COSMOS</strong>
+      <p>Esta experiência necessita JavaScript para renderizar os oito mundos procedurais.</p>
+      <p><a href="galaxias/index.html">Entrar no catálogo clássico de 50 galáxias</a></p>
+    </div>
+  </div>
+</noscript>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
